@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Academic Lab System</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .sidebar img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .sidebar h3, .sidebar p {
+      margin: 5px 0;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      margin-top: 20px;
+      padding: 0;
+      text-align: left;
+    }
+
+    .sidebar ul li {
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background-color: #000;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    .chart-container {
+      margin-top: 40px;
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <img src="Rabbits.jpg" alt="Rabbit Photo" />
+    <h3>Admin Name</h3>
+    <p>+123 456 7890</p>
+    <ul>
+      <li>Dashboard</li>
+      <li>Profile</li>
+      <li>Upload</li>
+      <li>Logout</li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h1>Admin Dashboard</h1>
+    </div>
+    <div class="content">
+      <h2>User Data</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Gender</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>john_doe</td>
+            <td>john@example.com</td>
+            <td>Male</td>
+          </tr>
+          <tr>
+            <td>jane_smith</td>
+            <td>jane@example.com</td>
+            <td>Female</td>
+          </tr>
+          <tr>
+            <td>alex_lee</td>
+            <td>alex@example.com</td>
+            <td>Non-binary</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="chart-container">
+        <h3>Gender Distribution</h3>
+        <canvas id="genderChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('genderChart').getContext('2d');
+    const genderChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Male', 'Female', 'Non-binary'],
+        datasets: [{
+          label: 'Gender',
+          data: [1, 1, 1], // 1 user per gender
+          backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });
+  </script>
+
+</body>
+</html>
