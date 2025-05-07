@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cycle Safe</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>CYCLE SAFE</h1>
+    <button id="profileBtn" onclick="toggleAuth()">My Profile</button>
+  </header>
+
+  <main>
+    <div class="input-container">
+      <input type="text" id="start" placeholder="Start location">
+      <input type="text" id="end" placeholder="Destination">
+      <button onclick="findSafeRoute()">Find Safe Route</button>
+      <button onclick="toggleFeedback()">Report Issue</button>
+    </div>
+    <div id="map"></div>
+  </main>
+
+  <!-- Feedback Modal -->
+  <div id="feedbackModal" class="modal">
+    <div class="modal-content">
+      <h2>Report Road Condition</h2>
+      <input type="text" id="roadName" placeholder="Road name">
+      <input type="number" id="conditionRating" placeholder="Condition rating (1-5)" min="1" max="5">
+      <button onclick="submitFeedback()">Submit</button>
+      <button onclick="toggleFeedback()">Close</button>
+    </div>
+  </div>
+
+  <!-- Auth Modal -->
+  <div id="authModal" class="modal">
+    <div class="modal-content">
+      <h2 id="authTitle">Login</h2>
+      <div id="loginForm">
+        <input type="text" id="loginPhone" placeholder="Phone number">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button onclick="loginUser()">Login</button>
+        <p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+      </div>
+
+      <div id="signupForm" style="display:none;">
+        <input type="text" id="phone" placeholder="Phone number">
+        <input type="email" id="email" placeholder="Email">
+        <input type="number" id="age" placeholder="Age">
+        <select id="gender">
+          <option value="">Select gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+        <select id="nationality">
+          <option value="">Nationality</option>
+          <option>Bangladeshi</option>
+          <option>Foreigner</option>
+        </select>
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="registerUser()">Sign Up</button>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+      </div>
+
+      <div id="userInfo" style="display:none;">
+        <h3>Your Profile</h3>
+        <p id="profileDetails"></p>
+        <button onclick="logoutUser()">Logout</button>
+      </div>
+
+      <button onclick="toggleAuth()">Close</button>
+    </div>
+  </div>
+
+  <!-- Weather -->
+  <div id="weather" class="weather-box">
+    <strong>Loading weather...</strong>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>System Analysis Project by Group 16 - Meta Minds</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlX4vnnuwhfm04Q43k_6foa-l8aoz0NEk&callback=initMap" async defer></script>
+</body>
+</html>
